@@ -12,3 +12,11 @@ class TractorRepository:
             .filter(Tractor.customer_id == customer_id)
             .first()
         )
+
+    @staticmethod
+    def get_by_chassis_number(db: Session, chassis_number: str):
+        return (
+            db.query(Tractor)
+            .filter(Tractor.chassis_number == chassis_number)
+            .first()
+        )

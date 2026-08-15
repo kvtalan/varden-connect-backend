@@ -1,4 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
+
 from app.database import Base
 
 
@@ -22,3 +24,9 @@ class Customer(Base):
     state = Column(String)
 
     is_phone_verified = Column(Boolean, default=False)
+
+    tractors = relationship(
+        "Tractor",
+        back_populates="customer",
+        cascade="all, delete-orphan"
+    )
